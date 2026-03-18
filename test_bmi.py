@@ -38,3 +38,13 @@ class TestClassifyBMI(unittest.TestCase):
         self.assertEqual(classify_bmi(30), "Obese")
     def test_just_above_30(self):
         self.assertEqual(classify_bmi(30.1), "Obese")
+
+    # Invalid BMI
+    def test_negative_bmi(self):
+        self.assertIsNone(classify_bmi(-1))
+
+    def test_zero_bmi(self):
+        self.assertIsNone(classify_bmi(0))
+
+if __name__ == "__main__":
+    unittest.main()

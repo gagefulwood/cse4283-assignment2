@@ -1,10 +1,21 @@
 import unittest
-from bmi import classify_bmi
+from bmi import classify_bmi, calculate_bmi
 
-#######################
-# Calculate BMI Tests #
-#######################
+class TestCalculateBMI(unittest.TestCase):
+    #######################
+    # Calculate BMI Tests #
+    #######################
+    def test_known_value(self):
+        self.assertAlmostEqual(calculate_bmi(5,3,125), 22.7, places=1)
 
+    def test_zero_weight(self):
+        self.assertIsNone(calculate_bmi(4,9,0))
+
+    def test_negative_weight(self):
+        self.assertIsNone(calculate_bmi(4,9,-1))
+
+    def test_zero_height(self):
+        self.assertIsNone(calculate_bmi(0,0,50))
 
 class TestClassifyBMI(unittest.TestCase):
     ######################
